@@ -235,12 +235,15 @@ class Projects extends AbstractApi
     /**
      * @param int $project_id
      * @param string $commit_ref
+     * @param array $variables
      * @return mixed
      */
-    public function createPipeline($project_id, $commit_ref)
+    public function createPipeline($project_id, $commit_ref, array $variables = [])
     {
         return $this->post($this->getProjectPath($project_id, 'pipeline'), array(
-            'ref' => $commit_ref));
+            'ref' => $commit_ref,
+            'variables' => $variables
+        ));
     }
 
     /**
